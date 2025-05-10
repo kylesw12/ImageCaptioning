@@ -7,8 +7,28 @@ document.getElementById("imageInput").addEventListener("change", function (e) {
 });
 
 document.getElementById("captionBtn").addEventListener("click", function () {
-  caption = "A dog lying on a cozy couch."; // Simulated output for now
-  document.getElementById("captionText").innerText = caption;
+  const file = document.getElementById("imageInput").files[0];
+  if (!file) {
+    alert("Please upload an image first.");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("image", file);
+
+  fetch("http://localhost:5000/caption", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      caption = data.caption;
+      document.getElementById("captionText").innerText = caption;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Something went wrong while getting the caption.");
+    });
 });
 
 document.getElementById("speakBtn").addEventListener("click", function () {
