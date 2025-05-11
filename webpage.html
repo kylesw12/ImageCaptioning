@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -19,4 +19,51 @@
   <script src="script.js"></script>
 </body>
 </html>
+ -->
 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Caption Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Jersey+15&family=Young+Serif&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="left-header">
+      <img src="imageCaption_logo.png" alt="Logo" class="logo" />
+      <span class="app-name">EchoLense</span>
+    </div>
+    <div class="braille">⠑⠉⠓⠕⠇⠑⠝⠎⠑</div>
+  </header>
+
+  <div class="title-container">
+    <h1>Image Caption Generator</h1>
+    <p class="description">Generate accessible image descriptions for the visually impaired in real-time.</p>
+  </div>
+
+
+  <div class="main-container">
+    <div class="left-panel">
+      <input type="file" id="imageInput" accept="image/*" />
+      <br />
+      <img id="preview" src="" alt="Image Preview" />
+    </div>
+
+    <div class="right-panel">
+      <div class="button-row">
+        <button id="captionBtn">🧠 Generate Caption</button>
+        <button id="speakBtn">🔊Speak Caption</button>
+      </div>
+      <p id="captionText"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
