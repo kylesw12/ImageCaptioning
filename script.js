@@ -16,7 +16,7 @@ document.getElementById("captionBtn").addEventListener("click", function () {
   const formData = new FormData();
   formData.append("image", file);
 
-  fetch("https://9grrr5sfjc.execute-api.us-west-2.amazonaws.com/default/caption", {
+  fetch("https://9grrr5sfjc.execute-api.us-west-2.amazonaws.com/caption", {
     method: "POST",
     body: formData,
   })
