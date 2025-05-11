@@ -7,22 +7,23 @@ document.getElementById("imageInput").addEventListener("change", function (e) {
 });
 
 document.getElementById("captionBtn").addEventListener("click", function () {
-  const file = document.getElementById("imageInput").files[0];
-  if (!file) {
-    alert("Please upload an image first.");
-    return;
-  }
-
-  const formData = new FormData();
-  formData.append("image", file);
-
-  fetch("https://9grrr5sfjc.execute-api.us-west-2.amazonaws.com/caption", {
+  // NOTE: We're NOT uploading the image to S3 from here in this version
+  fetch("https://z9ehpxhkvi.execute-api.us-west-2.amazonaws.com/caption", {
     method: "POST",
-    body: formData,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ key: "SennaF1Car.jpg" }), // your existing image key in S3
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then((data) => {
-      caption = data.caption;
+      // Adjust this line depending on Lambda's response structure
+      caption = data.caption || data.body?.caption || JSON.parse(data.body).content[0]?.text || "No caption found.";
       document.getElementById("captionText").innerText = caption;
     })
     .catch((error) => {
