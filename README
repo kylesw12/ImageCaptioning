@@ -1,0 +1,29 @@
+# 🖼️ AI Image Caption Generator
+
+This project is a web-based application that allows users to upload an image and receive an automatically 
+generated caption using AWS Bedrock. The image is uploaded to an Amazon S3 bucket, then processed through 
+AWS Lambda and Bedrock for caption generation.
+
+## 🚀 Features
+
+- 📤 Upload images from your browser
+- ☁️ Images are securely stored in S3
+- 🧠 Captions are generated using Amazon Bedrock (e.g., Claude)
+- 🔊 Optional text-to-speech feature for accessibility and blind
+
+---
+
+## 📃 How to Use
+
+- 📤 Upload an image using the choose file button
+- 🌅 See the selected image to ensure it is the correct one
+- ✏️ Select the Generate Caption button and wait for the caption to appear
+- 🔉 Select the Speak Caption button for the audio verson of the caption to play
+
+## 🧱 Architecture Overview
+
+```plaintext
+User → Browser UI
+       ↳ POST to API Gateway (/get-upload-url) → Lambda (generates pre-signed PUT URL)
+       ↳ PUT to S3 (uploads image)
+       ↳ POST to API Gateway (/caption) → Lambda (downloads image from S3, captions via Bedrock)
