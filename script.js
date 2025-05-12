@@ -42,6 +42,8 @@ document.getElementById("speakBtn").addEventListener("click", function () {
   }
 });
 
+
+
 // let caption = "";
 // let uploadedFilename = ""; // Track the uploaded file name
 
@@ -54,7 +56,7 @@ document.getElementById("speakBtn").addEventListener("click", function () {
 
 //   // Step 1: Get pre-signed URL from Lambda via API Gateway
 //   try {
-//     const response = await fetch("https://jb0cof4tl7.execute-api.us-west-2.amazonaws.com/get-upload-url", {
+//     const response = await fetch("https://jb0cof4tl7.execute-api.us-west-2.amazonaws.com/prod/get-upload-url", {
 //       method: "POST",
 //       headers: {
 //         "Content-Type": "application/json",
@@ -62,12 +64,10 @@ document.getElementById("speakBtn").addEventListener("click", function () {
 //       body: JSON.stringify({ filename: file.name }),
 //     });
 
-//     // if (!response.ok) throw new Error("Failed to get upload URL");
+//     if (!response.ok) throw new Error("Failed to get upload URL");
 
 //     const data = await response.json();
 //     const uploadUrl = data.upload_url;
-//     // console.log("Presigned URL:", uploadUrl);
-
 
 //     // Step 2: Upload the file directly to S3
 //     const uploadResponse = await fetch(uploadUrl, {
@@ -124,3 +124,4 @@ document.getElementById("speakBtn").addEventListener("click", function () {
 //     speechSynthesis.speak(utterance);
 //   }
 // });
+
